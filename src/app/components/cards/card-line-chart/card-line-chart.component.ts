@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
-import Chart from "chart.js";
+import { Chart } from "chart.js";
 
 @Component({
   selector: "app-card-line-chart",
@@ -109,7 +109,7 @@ export class CardLineChartComponent implements OnInit {
           ],
         },
       },
-    };
+    } as any;
     let ctx: any = document.getElementById("line-chart") as HTMLCanvasElement;
     ctx = ctx.getContext("2d");
     new Chart(ctx, config);
