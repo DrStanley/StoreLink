@@ -4,6 +4,12 @@ import { Routes, RouterModule } from "@angular/router";
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
 import { AuthComponent } from "./layouts/auth/auth.component";
+import { VendorComponent } from "./layouts/vendor/vendor/vendor.component";
+
+// vendor views
+import { AddProductComponent } from "./views/vendor/add-products/add-products.component";
+import { ProductsComponent } from "./views/vendor/products/products.component";
+import { DashboardComponent as VendorDashboardComponent } from "./views/vendor/dashboard/dashboard.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
@@ -33,6 +39,18 @@ const routes: Routes = [
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },
+  // vendor views
+  {
+    path: "vendor",
+    component: VendorComponent,
+    // canActivate: [AuthGuard],
+    children: [
+      { path: "dashboard", component: VendorDashboardComponent },
+      { path: "products", component: ProductsComponent },
+      { path: "products/add", component: AddProductComponent },
+      { path: "", redirectTo: "dashboard", pathMatch: "full" },
+    ],
+  },
   // auth views
   {
     path: "auth",
@@ -54,4 +72,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

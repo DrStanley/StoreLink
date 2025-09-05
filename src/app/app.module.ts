@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
 import { AuthComponent } from "./layouts/auth/auth.component";
+import { VendorComponent } from "./layouts/vendor/vendor/vendor.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
@@ -47,7 +48,15 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
-
+import { AddProductComponent } from './views/vendor/add-products/add-products.component';
+import { ProductsComponent } from './views/vendor/products/products.component';
+import { DashboardComponent as VendorDashboardComponent } from './views/vendor/dashboard/dashboard.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
+import { ToastrModule } from 'ngx-toastr';
+import { environment } from "src/environments/environment";
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,9 +93,13 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    VendorComponent,
+    AddProductComponent,
+    ProductsComponent,
+    VendorDashboardComponent, ForgotPasswordComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, AngularFireModule.initializeApp(environment.firebase), ReactiveFormsModule, FormsModule, ToastrModule.forRoot(),],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

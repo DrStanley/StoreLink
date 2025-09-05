@@ -24,3 +24,8 @@ package-lock.json
 commit.sh
 /.angular/cache
 /.angular/cache
+/.angular
+.angular/cache/16.2.14/angular-webpack/052a1a7835b8c463c581ed93245bade30f4d4218/0.pack
+.angular/cache/16.2.14/angular-webpack/052a1a7835b8c463c581ed93245bade30f4d4218/1.pack
+.angular/cache/16.2.14/angular-webpack/052a1a7835b8c463c581ed93245bade30f4d4218/index.pack
+.angular/cache/16.2.14/angular-webpack/052a1a7835b8c463c581ed93245bade30f4d4218/index.pack.old
