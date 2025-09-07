@@ -12,6 +12,11 @@ export const environment = {
     messagingSenderId: "371239871227",
     appId: "1:371239871227:web:839670ba906ae0ed2b065e",
     measurementId: "G-SY478GQVFX"
+  },
+  rechaptcha: {
+    // siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', // Test key from Google, will always return true
+    siteKey: '6LdGSsArAAAAAPHgJdmGwVV379G8nuuQQmLSoU7Y',
+    scretkey: '6LdGSsArAAAAAH2X_J0u7jBN9Z8YmEauIVCC3379'
   }
 };
 

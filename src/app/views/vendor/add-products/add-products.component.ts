@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from 'src/app/services/product.service';
 import { ImageService } from '../../../services/image.service';
 import { Product } from '../../../models/product';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-add-products',
@@ -11,11 +13,8 @@ import { Product } from '../../../models/product';
   styleUrls: ['./add-products.component.css']
 })
 export class AddProductComponent {
-  private fb = inject(FormBuilder);
-  private productService = inject(ProductService);
-  private imageService = inject(ImageService);
-  
   selectedFile: File | null = null;
+  constructor(private fb: FormBuilder, private productService: ProductService, private imageService: ImageService) { }
 
   productForm: FormGroup = this.fb.group({
     name: ['', Validators.required],

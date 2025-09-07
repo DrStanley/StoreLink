@@ -7,8 +7,9 @@ import { Firestore, collection, addDoc, collectionData, query, where } from '@an
   providedIn: 'root',
 })
 export class ProductService {
-  private firestore = inject(Firestore);
   private productsCollection = collection(this.firestore, 'products');
+
+  constructor(private firestore:Firestore) {}
 
   getProducts(): Observable<Product[]> {
     return collectionData(this.productsCollection, { idField: 'id' }) as Observable<Product[]>;

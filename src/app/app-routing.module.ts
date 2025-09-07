@@ -25,12 +25,15 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { authGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
   // admin views
   {
     path: "admin",
     component: AdminComponent,
+    canActivate: [authGuard],
+    data: { role: 'admin' },
     children: [
       { path: "dashboard", component: DashboardComponent },
       { path: "settings", component: SettingsComponent },
@@ -43,7 +46,8 @@ const routes: Routes = [
   {
     path: "vendor",
     component: VendorComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [authGuard],
+    data: { role: 'vendor' },
     children: [
       { path: "dashboard", component: VendorDashboardComponent },
       { path: "products", component: ProductsComponent },

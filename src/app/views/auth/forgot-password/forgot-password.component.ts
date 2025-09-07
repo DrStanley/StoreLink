@@ -7,9 +7,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent {
-  private authService = inject(AuthService);
   email = signal('');
 
+  constructor(private authService:AuthService) { }
   async sendResetEmail(): Promise<void> {
 
     await this.authService.sendPasswordResetEmail(this.email());

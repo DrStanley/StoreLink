@@ -1,2 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+.toast-top-right {
+    top: 1rem !important;
+    right: 1rem !important;
+    position: fixed !important;
+    z-index: 9999 !important;
+}
+/* Force override with stronger selectors */
+#toast-container>.toast {
+    padding: 0.75rem 1rem !important;
+    border-radius: 0.5rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
+    opacity: 1 !important;
+    /* prevent transparency */
+}
+
+/* Title */
+#toast-container>.toast .toast-title {
+    font-weight: 700 !important;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+/* Success/Error/Info/Warning */
+#toast-container>.toast-success {
+    background-color: #16a34a !important;
+    color: #fff !important;
+}
+
+#toast-container>.toast-error {
+    background-color: #dc2626 !important;
+    color: #fff !important;
+}
+
+#toast-container>.toast-info {
+    background-color: #2563eb !important;
+    color: #fff !important;
+}
+
+#toast-container>.toast-warning {
+    background-color: #d97706 !important;
+    color: #fff !important;
+}

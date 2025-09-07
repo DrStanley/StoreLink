@@ -1,5 +1,4 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -54,9 +53,20 @@ import { DashboardComponent as VendorDashboardComponent } from './views/vendor/d
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { environment } from "src/environments/environment";
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+//firebase
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+
+import { RouterLink } from "@angular/router";
+import { NgModule } from "@angular/core";
+import { ProductDetailsComponent } from './views/products/product-details/product-details.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { LoadingInterceptor } from "./interceptors/loading.interceptor";
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,10 +106,31 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     VendorComponent,
     AddProductComponent,
     ProductsComponent,
-    VendorDashboardComponent, ForgotPasswordComponent,
+    VendorDashboardComponent, ForgotPasswordComponent, ProductDetailsComponent, LoadingComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, AngularFireModule.initializeApp(environment.firebase), ReactiveFormsModule, FormsModule, ToastrModule.forRoot(),],
-  providers: [],
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterLink,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      timeOut: 3000,
+    }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+  ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

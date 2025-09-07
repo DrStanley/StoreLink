@@ -11,7 +11,7 @@
     <!-- Brand -->
     <a [routerLink]="['/']"
       class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
-      <span class="block sm:hidden"> Tailwind Angular </span>
+      <!-- <span class="block sm:hidden"> Tailwind Angular </span> -->
       <span class="hidden sm:block"> Store Link </span>
     </a>
     <!-- User -->
@@ -31,7 +31,7 @@
       <div class="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
         <div class="flex flex-wrap">
           <div class="w-6/12">
-            <a [routerLink]="['/']"
+            <a href="#"
               class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
               Store Link
             </a>
@@ -62,7 +62,7 @@
       <!-- Navigation -->
 
       <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-        <li class="items-center">
+        <li class="items-center" *ngIf="currentUser.role=='admin'">
           <a [routerLink]="['/admin/dashboard']" class="text-xs uppercase py-3 font-bold block" routerLinkActive
             #adminDashboard="routerLinkActive" [ngClass]="
               adminDashboard.isActive
@@ -72,7 +72,20 @@
             <i class="fas fa-tv mr-2 text-sm" [ngClass]="
                 adminDashboard.isActive ? 'opacity-75' : 'text-blueGray-300'
               "></i>
-            Dashboard
+            Admin Dashboard
+          </a>
+        </li>
+        <li class="items-center" *ngIf="currentUser.role=='vendor'">
+          <a [routerLink]="['/vendor/dashboard']" class="text-xs uppercase py-3 font-bold block" routerLinkActive
+            #adminDashboard="routerLinkActive" [ngClass]="
+                        adminDashboard.isActive
+                          ? 'text-red-600 hover:text-red-700'
+                          : 'text-blueGray-700 hover:text-blueGray-500'
+                      ">
+            <i class="fas fa-tv mr-2 text-sm" [ngClass]="
+                          adminDashboard.isActive ? 'opacity-75' : 'text-blueGray-300'
+                        "></i>
+            Vendor Dashboard
           </a>
         </li>
 

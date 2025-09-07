@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
+import { UserProfile } from "@angular/fire/auth";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
@@ -7,11 +8,12 @@ import { AuthService } from "src/app/services/auth.service";
 })
 export class SidebarComponent implements OnInit {
   collapseShow = "hidden";
-  public authService = inject(AuthService);
+  currentUser :UserProfile | any = null;
+  constructor(public authService:AuthService) { }
 
-  constructor() { }
-
-  ngOnInit() { }
+  ngOnInit() {
+    this.currentUser = this.authService.currentUser();
+   }
   toggleCollapseShow(classes) {
     this.collapseShow = classes;
   }

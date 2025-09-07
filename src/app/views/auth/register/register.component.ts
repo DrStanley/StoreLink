@@ -9,16 +9,15 @@ import { AuthService } from "src/app/services/auth.service";
 })
 
 export class RegisterComponent {
-  private authService = inject(AuthService);
-  private router = inject(Router);
-
   email = '';
   name = '';
   password = '';
+  confirmPassword = '';
   role: UserRole = 'vendor';
+  constructor(private authService: AuthService, private router: Router) { }
 
   register(): void {
-    this.authService.signUp(this.name,this.email, this.password, this.role).subscribe(() => {
+    this.authService.signUp(this.name, this.email, this.password, this.role).subscribe(() => {
       this.router.navigate(['auth/login']);
     });
   }
