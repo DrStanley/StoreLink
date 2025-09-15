@@ -52,6 +52,7 @@ const routes: Routes = [
       { path: "dashboard", component: VendorDashboardComponent },
       { path: "products", component: ProductsComponent },
       { path: "products/add", component: AddProductComponent },
+      { path: "products/:id", component: AddProductComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },

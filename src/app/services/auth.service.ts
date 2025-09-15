@@ -30,26 +30,30 @@ export class AuthService {
 
   constructor(private auth: Auth, private toastrService: ToastrService, private router: Router, private firestore: Firestore,private loadingService: LoadingService) {
   }
-  private user$ = authState(this.auth).pipe(
+  public user$ = authState(this.auth).pipe(
     switchMap((user: User | null) => {
+      this.loadingService.show();
       if (user) {
         const userDocRef = doc(this.firestore, `users/${user.uid}`);
         return from(getDoc(userDocRef)).pipe(
           map(docSnap => {
+            this.loadingService.hide();
             if (docSnap.exists()) {
               return docSnap.data() as UserProfile;
+              
             } else {
               return null;
             }
           })
         );
       } else {
+        this.loadingService.hide();
         return of(null);
       }
     })
   );
 
-  public currentUser = toSignal(this.user$, { initialValue: null });
+  public currentUser = toSignal(this.user$, { initialValue: undefined });
 
   signIn(email: string, password: string): Observable<void> {
     this.loadingService.show();
