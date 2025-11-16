@@ -1,0 +1,24 @@
+<app-index-navbar></app-index-navbar>
+<main>
+    <div class="floating-icon">
+        <a
+            onclick="event.preventDefault(); document.getElementById('containerP').scrollIntoView({ behavior: 'smooth' });">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </div>
+    <section class="mx-auto px-4 py-4" id="containerP">
+        <div class="flex flex-wrap justify-center mb-2">
+            <div class="w-full md:w-3/12">
+                <h2 class="text-4xl font-semibold text-center">Welcome to the Store</h2>
+            </div>
+            <div class="w-full md:w-3/12">
+                <p class="text-lg text-center mb-1">
+                    Explore our wide range of products available for purchase. Browse through different categories,
+                    filter by price, and find the best deals tailored to your needs.
+                </p>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </section>
+</main>
+<app-footer></app-footer>

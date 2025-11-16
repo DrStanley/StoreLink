@@ -1,0 +1,135 @@
+/* Full-page layout */
+.page {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 20px;
+    /* Prevent shared scrolling */
+}
+
+/* LEFT PANE (Fixed) */
+.left-pane {
+    width: 300px;
+    background: #f5f5f5;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    position: fixed;
+    /* ← FIXED */
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    /* scroll only if needed */
+}
+
+/* RIGHT PANE (Scrolls vertically) */
+.right-pane {
+    margin-left: 250px;
+    /* match the width of left pane */
+    flex: 1;
+    height: 100vh;
+    overflow-y: auto;
+    /* ← ONLY this should scroll */
+    padding: 20px;
+    background: #fff;
+}
+
+/* PRODUCT GRID */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+/* Product card */
+.product {
+    padding: 20px;
+    background: #ececec;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* MAIN LAYOUT */
+.page-layout {
+    display: flex;
+    height: calc(100vh - 100px);
+    /* adjust based on header height */
+    overflow: hidden;
+}
+
+/* LEFT FILTER PANEL – FIXED */
+.filters-panel {
+    width: 250px;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    background: #fafafa;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    /* if filters become many */
+}
+
+.filters-panel select,
+.filters-panel input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.reset-btn {
+    padding: 8px 12px;
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+}
+
+/* RIGHT SIDE – SCROLLABLE AREA */
+.products-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* AUTO-FIT PRODUCT GRID */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* PRODUCT CARD */
+.product-card {
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.floating-icon {
+    position: fixed;
+    right: 7vw;
+    z-index: 9999;
+    background-color: rgb(33 160 244);
+    color: white;
+    border-radius: 30%;
+    padding: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}   

@@ -4,10 +4,18 @@
       [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'">
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
-          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+          <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
             <h3 class="font-semibold text-lg" [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'">
               All Products
             </h3>
+            <button type="button">
+              <a routerLink="/vendor/products/add"
+                class="bg-red-600 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button">
+                Add New Product
+              </a>
+            </button>
+
           </div>
         </div>
       </div>

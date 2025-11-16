@@ -26,6 +26,9 @@ import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
 import { authGuard } from "./guards/auth.guard";
+import { ForgotPasswordComponent } from "./views/auth/forgot-password/forgot-password.component";
+import { StoreComponent } from "./views/store/store/store.component";
+import { StoreProductsComponent } from "./views/store/store-products/store-products.component";
 
 const routes: Routes = [
   // admin views
@@ -63,7 +66,18 @@ const routes: Routes = [
     children: [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
+      { path: "forgot-password", component: ForgotPasswordComponent },
       { path: "", redirectTo: "login", pathMatch: "full" },
+    ],
+  },
+
+  // store
+  {
+    path: "store",
+    component: StoreComponent,
+    children: [
+      { path: "products", component: StoreProductsComponent },
+      { path: "", redirectTo: "products", pathMatch: "full" },
     ],
   },
   // no layout views

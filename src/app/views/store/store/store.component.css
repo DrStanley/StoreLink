@@ -1,0 +1,14 @@
+.py-4 {
+    padding-top: 4rem !important; 
+}
+.floating-icon {
+    position: fixed;
+    right: 7vw;
+    z-index: 9999;
+    background-color: rgb(33 160 244);
+    color: white;
+        bottom: 5vw;
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

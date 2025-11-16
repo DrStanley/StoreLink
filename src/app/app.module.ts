@@ -67,6 +67,8 @@ import { ProductDetailsComponent } from './views/products/product-details/produc
 import { LoadingComponent } from './components/loading/loading.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { LoadingInterceptor } from "./interceptors/loading.interceptor";
+import { StoreProductsComponent } from './views/store/store-products/store-products.component';
+import { StoreComponent } from "./views/store/store/store.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,7 +108,7 @@ import { LoadingInterceptor } from "./interceptors/loading.interceptor";
     VendorComponent,
     AddProductComponent,
     ProductsComponent,
-    VendorDashboardComponent, ForgotPasswordComponent, ProductDetailsComponent, LoadingComponent,
+    VendorDashboardComponent, ForgotPasswordComponent, ProductDetailsComponent, LoadingComponent, StoreProductsComponent, StoreComponent,
   ],
   imports: [
     BrowserAnimationsModule,
